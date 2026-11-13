@@ -19,7 +19,7 @@ marketplaces y hardware). Una sola página de portada más contacto, Libro de Re
   `<Logo />` (header): «GIA» (`public/logo-gia.png`) con el eslogan al lado en dos líneas como texto HTML, porque
   debajo y en imagen no se leía a ese tamaño;
   `<Logo variant="full" />` (con eslogan) va en el pie y en tamaños grandes.
-- En el pie se mantiene el «GIA» gigante en contorno (al usuario le gustó). RUC y razón social no van en el pie;
+- El «GIA» gigante en contorno del pie se quitó a pedido del usuario (2026-11-12). RUC y razón social no van en el pie;
   solo en la hoja del Libro de Reclamaciones y en las páginas legales, donde la ley los exige.
 
 ## Dónde está cada cosa

@@ -60,13 +60,6 @@ export function Footer() {
           <Offices offices={offices} />
         </div>
       </div>
-      {/* Marca gigante en contorno */}
-      <p
-        className="pointer-events-none select-none overflow-hidden text-center font-display text-[34vw] font-semibold leading-[0.78] tracking-[-0.06em] text-transparent [-webkit-text-stroke:1.5px_rgb(55_48_163/0.22)]"
-        aria-hidden="true"
-      >
-        GIA
-      </p>
       <div className="bg-black px-5 py-4 text-center text-xs font-medium text-white">
         © 2026 {site.name}. Todos los derechos reservados.
       </div>
