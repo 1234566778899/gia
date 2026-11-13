@@ -27,9 +27,9 @@ export function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 bg-white transition-shadow duration-300 ${scrolled || open ? 'shadow-[0_1px_12px_rgba(0,0,0,0.08)]' : ''}`}
     >
-      <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-[70px] max-w-7xl items-center justify-between px-5 sm:px-8">
         <Link href={home ? '#top' : '/'} aria-label={site.name} onClick={() => setOpen(false)}>
-          <Logo className="h-[54px]" />
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

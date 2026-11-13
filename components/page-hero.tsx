@@ -3,7 +3,7 @@ import { FadeIn } from './motion-kit'
 /** Encabezado de las páginas internas: banda gris con título en mayúsculas y barra de acento. */
 export function PageHero({ kicker, title, intro }: { kicker?: string; title: string; intro?: React.ReactNode }) {
   return (
-    <section className="bg-panel pb-12 pt-[126px] md:pb-16 md:pt-[142px]">
+    <section className="bg-panel pb-12 pt-[118px] md:pb-16 md:pt-[134px]">
       <FadeIn className="mx-auto max-w-7xl px-5 sm:px-8">
         {kicker && <p className="kicker mb-2">{kicker}</p>}
         <h1 className="section-title">{title}</h1>

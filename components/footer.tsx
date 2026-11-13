@@ -11,7 +11,7 @@ export function Footer() {
     <footer className="bg-panel">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:grid-cols-2 sm:px-8 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <Logo className="h-16" />
+          <Logo variant="full" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">{site.description}</p>
           <a href={site.holding.url} className="mt-4 inline-block text-sm font-medium text-brand hover:underline">
             Una empresa de {site.holding.name} →

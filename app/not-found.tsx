@@ -5,7 +5,7 @@ export const metadata: Metadata = { title: 'Página no encontrada', robots: { in
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[80svh] flex-col items-center justify-center px-5 pt-[78px] text-center">
+    <main className="flex min-h-[80svh] flex-col items-center justify-center px-5 pt-[70px] text-center">
       <p className="kicker mb-2">Error 404</p>
       <h1 className="section-title">Esta página no existe</h1>
       <span className="accent-bar mx-auto mt-4" />

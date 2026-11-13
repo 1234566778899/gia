@@ -29,7 +29,7 @@ export function Hero() {
       aria-label="Presentación"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      className="relative isolate flex h-[100svh] min-h-[560px] items-center justify-center overflow-hidden bg-black pt-[78px]"
+      className="relative isolate flex h-[100svh] min-h-[560px] items-center justify-center overflow-hidden bg-black pt-[70px]"
     >
       <AnimatePresence initial={false}>
         <motion.div

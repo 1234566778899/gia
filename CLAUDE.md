@@ -16,6 +16,9 @@ marketplaces y hardware). Una sola página de portada más contacto, Libro de Re
 - Marca: logotipo «GIA» con el eslogan «BUSINESS & IT CONSULTING» debajo (`public/logo.png`), favicon con la G
   blanca sobre índigo y el ícono del Libro de Reclamaciones (`public/libro-reclamaciones.png`), todo generado con
   ChatGPT y limpiado con `sharp`. Las 4 propuestas originales están en `assets/logo-propuestas.png`.
+  `<Logo />` (header): «GIA» (`public/logo-gia.png`) con el eslogan al lado en dos líneas como texto HTML, porque
+  debajo y en imagen no se leía a ese tamaño;
+  `<Logo variant="full" />` (con eslogan) va en el pie y en tamaños grandes.
 - En el pie se mantiene el «GIA» gigante en contorno (al usuario le gustó). RUC y razón social no van en el pie;
   solo en la hoja del Libro de Reclamaciones y en las páginas legales, donde la ley los exige.
 
