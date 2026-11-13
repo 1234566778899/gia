@@ -2,7 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ContactForm } from '@/components/contact-form'
 import { FadeIn } from '@/components/motion-kit'
+import { Offices } from '@/components/offices'
 import { PageHero } from '@/components/page-hero'
+import { Socials } from '@/components/socials'
 import { Value } from '@/components/value'
 import { company } from '@/lib/legal'
 
@@ -44,8 +46,15 @@ export default function ContactPage() {
                 <Info label="Correo"><Value v={company.email} /></Info>
                 <Info label="Teléfono"><Value v={company.phone} /></Info>
                 <Info label="Horario">{company.hours}</Info>
-                <Info label="Dirección"><Value v={company.address} /></Info>
+                <Info label="Síguenos"><Socials className="mt-2" /></Info>
               </dl>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.12}>
+            <div className="rounded-md bg-panel p-6 sm:p-8">
+              <h2 className="mb-5 font-display text-lg font-semibold uppercase text-ink">Nuestras sedes</h2>
+              <Offices columns={1} />
             </div>
           </FadeIn>
 

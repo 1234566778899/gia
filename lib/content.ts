@@ -150,3 +150,97 @@ export const capabilities = [
   { title: 'Redes', items: ['Fibra óptica', 'Inalámbricas', 'IoT', 'Domótica'] },
   { title: 'Negocio', items: ['ERP', 'CRM', 'BPM', 'RPA'] },
 ]
+
+/**
+ * Redes sociales. PROVISIONAL: los perfiles aún no existen, así que `url` es null y el ícono no enlaza a
+ * ninguna parte (para no mandar a la gente a una cuenta ajena). Al crearlos, poner la URL de cada uno.
+ */
+export const socials: { name: 'LinkedIn' | 'Facebook' | 'Instagram' | 'X' | 'YouTube' | 'TikTok'; url: string | null }[] = [
+  { name: 'LinkedIn', url: null },
+  { name: 'Facebook', url: null },
+  { name: 'Instagram', url: null },
+  { name: 'X', url: null },
+  { name: 'YouTube', url: null },
+  { name: 'TikTok', url: null },
+]
+
+/**
+ * Sedes. PROVISIONAL: las direcciones son de ejemplo (el usuario las cambiará). Por eso no se publican en los
+ * datos estructurados de Google (components/json-ld.tsx).
+ */
+export const offices = [
+  { city: 'Lima', address: 'Av. Javier Prado Este 1234, Of. 801, San Isidro, Lima', provisional: true },
+  { city: 'Piura', address: 'Av. Grau 456, Of. 302, Piura', provisional: true },
+  { city: 'Chiclayo', address: 'Av. José Balta 789, Of. 205, Chiclayo', provisional: true },
+]
+
+/**
+ * Clientes y testimonios DE EJEMPLO (a pedido del usuario, que los reemplazará): las empresas y las personas son
+ * ficticias y los logos se generaron con ChatGPT. No publicar así: publicar testimonios inventados como reales
+ * puede ser publicidad engañosa. Usar solo clientes que autoricen su nombre, logo y testimonio.
+ */
+export const clients = {
+  example: true,
+  testimonials: [
+    {
+      year: '2026',
+      title: 'Caso de éxito: comercio omnicanal',
+      quote:
+        'Con GIA unificamos el inventario de nuestras tiendas y del comercio electrónico en una sola plataforma en la nube. Hoy vemos el stock en tiempo real y atendemos mejor a nuestros clientes en todos los canales.',
+      name: 'Lucía Paredes',
+      role: 'Gerente de Tecnología',
+      company: 'Andesur Retail',
+      logo: '/clients/andesur.png',
+    },
+    {
+      year: '2026',
+      title: 'Caso de éxito: automatización de procesos',
+      quote:
+        'Automatizamos la facturación y el seguimiento de envíos con integraciones y robots de software. Nuestro equipo dejó de copiar datos a mano y ahora se dedica a atender a los clientes.',
+      name: 'Jorge Salazar',
+      role: 'Gerente de Operaciones',
+      company: 'Puerto Brío Logística',
+      logo: '/clients/puerto-brio.png',
+    },
+    {
+      year: '2025',
+      title: 'Caso de éxito: inteligencia de negocios',
+      quote:
+        'Los tableros que construyó GIA nos muestran la producción, los envíos y las ventas de cada campaña en un solo lugar. La gerencia ahora decide con datos y no con hojas de cálculo sueltas.',
+      name: 'Carmen Ruiz',
+      role: 'Directora Comercial',
+      company: 'Agronorte Exportaciones',
+      logo: '/clients/agronorte.png',
+    },
+    {
+      year: '2025',
+      title: 'Caso de éxito: ciberseguridad',
+      quote:
+        'GIA evaluó nuestra infraestructura, corrigió las vulnerabilidades críticas y hoy monitorea nuestros sistemas. Protegemos mejor la información de nuestros pacientes y cumplimos con la normativa.',
+      name: 'Ricardo Mendoza',
+      role: 'Director de Sistemas',
+      company: 'Vértice Salud',
+      logo: '/clients/vertice-salud.png',
+    },
+    {
+      year: '2025',
+      title: 'Caso de éxito: inteligencia artificial',
+      quote:
+        'Implementamos un asistente con inteligencia artificial que responde las consultas frecuentes de nuestros clientes a cualquier hora y deriva los casos complejos a un asesor.',
+      name: 'Andrea Villanueva',
+      role: 'Gerente de Experiencia del Cliente',
+      company: 'Cumbre Capital',
+      logo: '/clients/cumbre-capital.png',
+    },
+    {
+      year: '2024',
+      title: 'Caso de éxito: cloud y continuidad',
+      quote:
+        'Migramos nuestros sistemas a una nube híbrida con un plan de recuperación ante desastres. Ganamos estabilidad en las operaciones de campo y tranquilidad para todo el equipo.',
+      name: 'Miguel Torres',
+      role: 'Jefe de Infraestructura TI',
+      company: 'Altiplano Minerals',
+      logo: '/clients/altiplano.png',
+    },
+  ],
+}

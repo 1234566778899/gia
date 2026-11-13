@@ -53,3 +53,13 @@ marketplaces y hardware). Una sola página de portada más contacto, Libro de Re
 5. DNS: el dominio `grupohen.com` ya usa los nameservers de Hosting SSD, así que el CNAME de `gia` se crea en el
    Zone Editor de su cPanel con el valor que indique Vercel.
 6. Revisión de los textos legales por un abogado.
+7. Redes sociales (`socials` en `lib/content.ts`): los perfiles aún no existen, `url: null` y el ícono no enlaza.
+   Poner las URLs reales al crearlos y agregarlas como `sameAs` en `components/json-ld.tsx`.
+8. Sedes (`offices` en `lib/content.ts`): Lima, Piura y Chiclayo son reales, pero las direcciones son inventadas
+   (`provisional: true`) a pedido del usuario. Reemplazarlas; mientras sean provisionales no van a json-ld.
+9. Clientes y testimonios (`clients` en `lib/content.ts`, sección `components/clients.tsx`, como la de
+   grupobusiness.it): son DE EJEMPLO a pedido del usuario. Empresas y personas ficticias (Andesur, Puerto Brío,
+   Agronorte, Vértice Salud, Cumbre Capital, Altiplano Minerals) con logos generados con ChatGPT en
+   `public/clients/` (la imagen original está en `assets/clientes-ejemplo.png`). No publicar así: testimonios
+   inventados presentados como reales pueden ser publicidad engañosa. Reemplazar por clientes que autoricen su
+   nombre, logo y testimonio.

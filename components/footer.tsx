@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { nav, services, site } from '@/lib/content'
+import { nav, offices, services, site } from '@/lib/content'
 import { legalNav } from '@/lib/legal'
 import { CookieSettingsLink } from './cookie-consent'
 import { Logo } from './logo'
+import { Offices } from './offices'
+import { Socials } from './socials'
 
 /** Pie gris claro con barra negra inferior, como en la referencia. */
 export function Footer() {
@@ -46,6 +48,17 @@ export function Footer() {
             <CookieSettingsLink />
           </li>
         </Column>
+      </div>
+      {/* Redes y sedes, como en la referencia */}
+      <div className="mx-auto grid max-w-7xl gap-10 border-t border-line px-5 py-10 sm:px-8 lg:grid-cols-[1.4fr_3fr]">
+        <div>
+          <p className="mb-4 font-display text-sm font-semibold uppercase text-ink">Síguenos</p>
+          <Socials />
+        </div>
+        <div>
+          <p className="mb-4 font-display text-sm font-semibold uppercase text-ink">Nuestras sedes</p>
+          <Offices offices={offices} />
+        </div>
       </div>
       {/* Marca gigante en contorno */}
       <p
