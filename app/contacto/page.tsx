@@ -21,31 +21,26 @@ const steps = [
 
 export default function ContactPage() {
   return (
-    <main className="overflow-x-clip">
+    <main>
       <PageHero
-        eyebrow="Contacto"
-        lines={[
-          'Hablemos de tu',
-          <>
-            próximo <span className="font-serif font-normal italic tracking-[-0.02em] text-accent">proyecto.</span>
-          </>,
-        ]}
+        kicker="Contacto"
+        title="Hablemos de tu próximo proyecto"
         intro="Cuéntanos qué necesitas. Te respondemos con un diagnóstico y una propuesta concreta."
       />
 
-      <section className="mx-auto grid max-w-7xl gap-6 px-4 pb-28 sm:px-6 lg:grid-cols-[1.35fr_1fr]">
+      <section className="mx-auto grid max-w-7xl gap-8 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-[1.4fr_1fr]">
         <FadeIn>
-          <div className="border-gradient rounded-[2rem] bg-gray-950 p-6 sm:p-10">
-            <h2 className="mb-8 text-2xl font-semibold tracking-tight text-white md:text-3xl">Envíanos un mensaje</h2>
+          <div className="rounded-md border border-line bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)] sm:p-10">
+            <h2 className="mb-8 font-display text-2xl font-semibold uppercase text-ink">Envíanos un mensaje</h2>
             <ContactForm />
           </div>
         </FadeIn>
 
         <div className="space-y-6">
-          <FadeIn delay={0.1}>
-            <div className="border-gradient rounded-[2rem] bg-gray-950 p-6 sm:p-8">
-              <h2 className="text-xl font-semibold text-white">Datos de contacto</h2>
-              <dl className="mt-6 space-y-5 text-[15px]">
+          <FadeIn delay={0.08}>
+            <div className="rounded-md bg-panel p-6 sm:p-8">
+              <h2 className="font-display text-lg font-semibold uppercase text-ink">Datos de contacto</h2>
+              <dl className="mt-5 space-y-4 text-[15px]">
                 <Info label="Correo"><Value v={company.email} /></Info>
                 <Info label="Teléfono"><Value v={company.phone} /></Info>
                 <Info label="Horario">{company.hours}</Info>
@@ -54,16 +49,16 @@ export default function ContactPage() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2}>
-            <div className="border-gradient rounded-[2rem] bg-gray-950 p-6 sm:p-8">
-              <h2 className="text-xl font-semibold text-white">Qué pasa después</h2>
-              <ol className="mt-6 space-y-5">
+          <FadeIn delay={0.16}>
+            <div className="rounded-md bg-panel p-6 sm:p-8">
+              <h2 className="font-display text-lg font-semibold uppercase text-ink">Qué pasa después</h2>
+              <ol className="mt-5 space-y-5">
                 {steps.map((s) => (
                   <li key={s.n} className="flex gap-4">
-                    <span className="font-mono text-sm text-indigo-300">{s.n}</span>
+                    <span className="font-display text-lg font-semibold text-brand">{s.n}</span>
                     <span>
-                      <span className="block font-medium text-white">{s.title}</span>
-                      <span className="mt-1 block text-sm leading-relaxed text-gray-400">{s.text}</span>
+                      <span className="block font-semibold text-ink">{s.title}</span>
+                      <span className="mt-1 block text-sm leading-relaxed text-muted">{s.text}</span>
                     </span>
                   </li>
                 ))}
@@ -71,10 +66,10 @@ export default function ContactPage() {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.3}>
-            <p className="px-2 text-sm leading-relaxed text-gray-500">
+          <FadeIn delay={0.24}>
+            <p className="px-1 text-sm leading-relaxed text-muted">
               ¿Quieres presentar una queja o un reclamo? Usa nuestro{' '}
-              <Link href="/libro-de-reclamaciones" className="text-indigo-300 underline underline-offset-2">
+              <Link href="/libro-de-reclamaciones" className="font-medium text-brand underline underline-offset-2">
                 Libro de Reclamaciones
               </Link>
               .
@@ -89,8 +84,8 @@ export default function ContactPage() {
 function Info({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <dt className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">{label}</dt>
-      <dd className="mt-1 text-gray-200">{children}</dd>
+      <dt className="text-xs font-semibold uppercase tracking-wider text-muted">{label}</dt>
+      <dd className="mt-1 text-ink">{children}</dd>
     </div>
   )
 }

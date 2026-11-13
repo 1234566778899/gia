@@ -5,12 +5,12 @@ export const metadata: Metadata = { title: 'Página no encontrada', robots: { in
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[100svh] flex-col items-center justify-center px-4 text-center">
-      <p className="eyebrow mb-6">Error 404</p>
-      <h1 className="text-[clamp(3rem,10vw,8rem)] font-semibold leading-[0.9] tracking-[-0.05em] text-white">
-        Esta ruta <span className="font-serif font-normal italic tracking-[-0.02em] text-accent">no existe.</span>
-      </h1>
-      <Link href="/" className="btn btn-primary mt-10">
+    <main className="flex min-h-[80svh] flex-col items-center justify-center px-5 pt-[78px] text-center">
+      <p className="kicker mb-2">Error 404</p>
+      <h1 className="section-title">Esta página no existe</h1>
+      <span className="accent-bar mx-auto mt-4" />
+      <p className="mt-6 max-w-md text-muted">Es posible que el enlace esté roto o que la página se haya movido.</p>
+      <Link href="/" className="btn btn-primary mt-8">
         Volver al inicio
       </Link>
     </main>

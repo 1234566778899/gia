@@ -64,13 +64,13 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.5, ease }}
-            className="border-gradient fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-xl rounded-2xl bg-gray-900/95 p-5 shadow-2xl backdrop-blur-md sm:bottom-5"
+            className="fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-xl rounded-md border border-line bg-white p-5 shadow-[0_8px_40px_rgba(0,0,0,0.15)] sm:bottom-5"
           >
-            <p className="text-sm font-semibold text-white">Usamos cookies</p>
-            <p className="mt-2 text-sm leading-relaxed text-gray-400">
+            <p className="text-sm font-semibold text-ink">Usamos cookies</p>
+            <p className="mt-2 text-sm leading-relaxed text-muted">
               Las técnicas hacen funcionar el sitio. Con tu permiso también usamos cookies de analítica para medir
               las visitas y mejorar el contenido. Más detalles en la{' '}
-              <Link href="/politica-de-cookies" className="text-indigo-300 underline underline-offset-2">
+              <Link href="/politica-de-cookies" className="text-brand underline underline-offset-2">
                 política de cookies
               </Link>
               .
@@ -79,7 +79,7 @@ export function CookieConsent({ gaId }: { gaId?: string }) {
               <button type="button" onClick={() => decide('accepted')} className="btn btn-primary !px-5 !py-2.5">
                 Aceptar analítica
               </button>
-              <button type="button" onClick={() => decide('rejected')} className="btn btn-ghost !px-5 !py-2.5">
+              <button type="button" onClick={() => decide('rejected')} className="btn btn-outline !px-5 !py-2.5">
                 Solo las necesarias
               </button>
             </div>
@@ -96,7 +96,7 @@ export function CookieSettingsLink() {
     <button
       type="button"
       onClick={() => window.dispatchEvent(new Event(OPEN_EVENT))}
-      className="text-left text-gray-300 transition-colors hover:text-white"
+      className="text-left text-muted transition-colors hover:text-brand"
     >
       Configurar cookies
     </button>

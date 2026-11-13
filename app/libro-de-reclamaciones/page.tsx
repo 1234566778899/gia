@@ -13,23 +13,15 @@ export const metadata: Metadata = {
 
 export default function ClaimsPage() {
   return (
-    <main className="overflow-x-clip">
+    <main>
       <PageHero
-        eyebrow="Atención al consumidor"
-        lines={[
-          'Libro de',
-          <span key="2" className="font-serif font-normal italic tracking-[-0.02em] text-accent">Reclamaciones.</span>,
-        ]}
-        intro={
-          <>
-            Conforme al Código de Protección y Defensa del Consumidor (Ley 29571), ponemos a tu disposición este Libro
-            de Reclamaciones virtual. Al registrar tu hoja podrás imprimirla y recibirás una copia en tu correo.
-          </>
-        }
+        kicker="Atención al consumidor"
+        title="Libro de Reclamaciones"
+        intro="Conforme al Código de Protección y Defensa del Consumidor (Ley 29571), ponemos a tu disposición este Libro de Reclamaciones virtual. Al registrar tu hoja podrás imprimirla y recibirás una copia en tu correo."
       />
-      <section className="mx-auto max-w-4xl px-4 pb-28 sm:px-6">
+      <section className="mx-auto max-w-4xl px-5 py-14 sm:px-8 md:py-20">
         <FadeIn>
-          <div className="border-gradient rounded-[2rem] bg-gray-950 p-6 sm:p-10">
+          <div className="rounded-md border border-line bg-white p-6 shadow-[0_1px_3px_rgba(0,0,0,0.05)] sm:p-10">
             <ClaimForm />
           </div>
         </FadeIn>

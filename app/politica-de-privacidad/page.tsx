@@ -28,10 +28,10 @@ const toc = [
 
 export default function PrivacyPage() {
   return (
-    <main className="overflow-x-clip">
+    <main>
       <PageHero
-        eyebrow="Legal"
-        lines={['Política de', <span key="2" className="font-serif font-normal italic tracking-[-0.02em] text-accent">privacidad.</span>]}
+        kicker="Legal"
+        title="Política de privacidad"
         intro="Te explicamos qué datos personales tratamos, para qué y cómo puedes ejercer tus derechos."
       />
       <LegalBody updated={legalUpdated} toc={toc}>

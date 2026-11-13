@@ -19,10 +19,10 @@ const toc = [
 
 export default function CookiesPage() {
   return (
-    <main className="overflow-x-clip">
+    <main>
       <PageHero
-        eyebrow="Legal"
-        lines={['Política de', <span key="2" className="font-serif font-normal italic tracking-[-0.02em] text-accent">cookies.</span>]}
+        kicker="Legal"
+        title="Política de cookies"
         intro="Usamos pocas cookies y solo activamos las de analítica si nos das permiso."
       />
       <LegalBody updated={legalUpdated} toc={toc}>

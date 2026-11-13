@@ -28,10 +28,10 @@ const toc = [
 
 export default function TermsPage() {
   return (
-    <main className="overflow-x-clip">
+    <main>
       <PageHero
-        eyebrow="Legal"
-        lines={['Términos y', <span key="2" className="font-serif font-normal italic tracking-[-0.02em] text-accent">condiciones.</span>]}
+        kicker="Legal"
+        title="Términos y condiciones"
         intro="Las reglas para usar este sitio web. Al navegarlo aceptas estas condiciones."
       />
       <LegalBody updated={legalUpdated} toc={toc}>

@@ -1,20 +1,14 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
+import { Exo, Montserrat } from 'next/font/google'
 import { CookieConsent } from '@/components/cookie-consent'
 import { Footer } from '@/components/footer'
 import { Header } from '@/components/header'
-import { SmoothScroll } from '@/components/motion-kit'
 import { site } from '@/lib/content'
 import './globals.css'
 
-const geist = Geist({ variable: '--font-geist', subsets: ['latin'] })
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
-const instrument = Instrument_Serif({
-  variable: '--font-instrument',
-  subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
-})
+// Como en la referencia: Exo en títulos y menú, Montserrat en el texto
+const exo = Exo({ variable: '--font-exo', subsets: ['latin'], weight: ['500', '600'], style: ['normal', 'italic'] })
+const montserrat = Montserrat({ variable: '--font-montserrat', subsets: ['latin'], weight: ['400', '500', '600'] })
 
 // Google Analytics 4: solo en producción, si se define NEXT_PUBLIC_GA_ID en Vercel y si el visitante lo acepta.
 const gaId = process.env.VERCEL_ENV === 'production' ? process.env.NEXT_PUBLIC_GA_ID : undefined
@@ -49,14 +43,13 @@ export const metadata: Metadata = {
   verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
 }
 
-export const viewport: Viewport = { themeColor: '#05060a', colorScheme: 'dark' }
+export const viewport: Viewport = { themeColor: '#ffffff', colorScheme: 'light' }
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="es" className={`${geist.variable} ${geistMono.variable} ${instrument.variable} antialiased`}>
+    <html lang="es" className={`${exo.variable} ${montserrat.variable} antialiased`}>
       {/* suppressHydrationWarning: extensiones del navegador (p. ej. ColorZilla) agregan atributos al body */}
-      <body className="font-sans text-gray-200" suppressHydrationWarning>
-        <SmoothScroll />
+      <body className="font-sans" suppressHydrationWarning>
         <Header />
         {children}
         <Footer />

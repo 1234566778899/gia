@@ -1,24 +1,18 @@
-import { Capabilities } from '@/components/capabilities'
-import { Cta } from '@/components/cta'
-import { JsonLd } from '@/components/json-ld'
 import { Hero } from '@/components/hero'
-import { Manifesto } from '@/components/manifesto'
-import { Marquee } from '@/components/marquee'
-import { Method } from '@/components/method'
-import { Services } from '@/components/services'
+import { About, Capabilities, ContactBand, Method, Solutions } from '@/components/home-sections'
+import { JsonLd } from '@/components/json-ld'
 
 export default function Home() {
   return (
     <>
       <JsonLd />
-      <main className="overflow-x-clip">
+      <main>
         <Hero />
-        <Marquee />
-        <Manifesto />
-        <Services />
+        <About />
+        <Solutions />
         <Method />
         <Capabilities />
-        <Cta />
+        <ContactBand />
       </main>
     </>
   )

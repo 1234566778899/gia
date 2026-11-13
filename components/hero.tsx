@@ -1,133 +1,121 @@
 'use client'
 
 import Image from 'next/image'
-import { useRef } from 'react'
-import { motion, useMotionValue, useScroll, useSpring, useTransform } from 'motion/react'
-import { services, site } from '@/lib/content'
-import { ease, SplitLines } from './motion-kit'
+import Link from 'next/link'
+import { useCallback, useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
+import { slides } from '@/lib/content'
+import { ease } from './motion-kit'
 
+const INTERVAL = 7000
+
+/** Carrusel a pantalla completa con fundido entre imágenes, texto centrado y un solo botón. */
 export function Hero() {
-  const ref = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.2])
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%'])
-  const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0])
+  const [i, setI] = useState(0)
+  const [paused, setPaused] = useState(false)
+  const go = useCallback((d: number) => setI((v) => (v + d + slides.length) % slides.length), [])
 
-  // Leve paralaje con el mouse
-  const mx = useMotionValue(0)
-  const my = useMotionValue(0)
-  const sx = useSpring(mx, { stiffness: 60, damping: 20 })
-  const sy = useSpring(my, { stiffness: 60, damping: 20 })
+  useEffect(() => {
+    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const t = setTimeout(() => go(1), INTERVAL)
+    return () => clearTimeout(t)
+  }, [i, paused, go])
 
+  const s = slides[i]
   return (
     <section
       id="top"
-      ref={ref}
-      onPointerMove={(e) => {
-        const r = e.currentTarget.getBoundingClientRect()
-        mx.set(((e.clientX - r.left) / r.width - 0.5) * -24)
-        my.set(((e.clientY - r.top) / r.height - 0.5) * -24)
-      }}
-      className="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden pb-10 pt-32 md:pb-14"
+      aria-roledescription="carrusel"
+      aria-label="Presentación"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      className="relative isolate flex h-[100svh] min-h-[560px] items-center justify-center overflow-hidden bg-black pt-[78px]"
     >
-      {/* Imagen de fondo */}
-      <motion.div className="absolute inset-0 -z-10" style={{ y: imgY, scale: imgScale }}>
+      <AnimatePresence initial={false}>
         <motion.div
-          className="absolute inset-0"
-          style={{ x: sx, y: sy }}
-          initial={{ opacity: 0, scale: 1.15, filter: 'blur(20px)' }}
-          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-          transition={{ duration: 2, ease }}
-        >
-          <Image
-            src="/images/hero.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[70%_center] opacity-80 md:object-right"
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-linear-to-r from-ink via-ink/70 to-transparent md:via-ink/40" />
-        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-ink to-transparent" />
-        <div className="absolute inset-x-0 top-0 h-40 bg-linear-to-b from-ink/80 to-transparent" />
-      </motion.div>
-
-      <motion.div style={{ y: textY, opacity: fade }} className="mx-auto w-full max-w-7xl px-4 sm:px-6">
-        <motion.p
-          className="eyebrow mb-6"
-          initial={{ opacity: 0, x: -12 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease, delay: 0.4 }}
-        >
-          {site.name}
-        </motion.p>
-
-        <SplitLines
-          as="h1"
-          inView={false}
-          delay={0.5}
-          className="text-[clamp(3.2rem,11vw,10.5rem)] font-semibold leading-[0.88] tracking-[-0.055em] text-white"
-          lines={[
-            'Tecnología',
-            <>
-              que <span className="font-serif font-normal italic tracking-[-0.02em] text-accent">impulsa</span>
-            </>,
-            <span key="3" className="text-shine">tu empresa.</span>,
-          ]}
-        />
-
-        <div className="mt-10 grid gap-8 md:mt-14 md:grid-cols-[1fr_auto] md:items-end">
-          <motion.p
-            className="max-w-xl text-lg leading-relaxed text-gray-300/80 md:text-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease, delay: 1 }}
-          >
-            Software, inteligencia artificial, datos, nube y ciberseguridad para transformar
-            organizaciones públicas y privadas. La empresa de tecnología de{' '}
-            <a href={site.holding.url} className="text-white underline decoration-indigo-400/50 underline-offset-4 hover:decoration-indigo-300">
-              {site.holding.name}
-            </a>
-            .
-          </motion.p>
-          <motion.div
-            className="flex flex-wrap gap-3"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease, delay: 1.15 }}
-          >
-            <a href="#servicios" className="btn btn-primary group">
-              Ver servicios
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </a>
-            <a href="/contacto" className="btn btn-ghost">
-              Agendar una reunión
-            </a>
-          </motion.div>
-        </div>
-
-        <motion.div
-          className="hairline mt-12 flex items-center justify-between pt-5 font-mono text-[11px] uppercase tracking-[0.2em] text-gray-500"
+          key={s.image}
+          className="absolute inset-0 -z-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.4 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.2, ease: 'easeInOut' }}
         >
-          <span>{services.length} líneas de servicio</span>
-          <span className="hidden sm:inline">Perú · Operación global</span>
-          <span className="flex items-center gap-2">
-            Scroll
-            <span className="relative block h-6 w-px overflow-hidden bg-gray-700">
-              <motion.span
-                className="absolute inset-x-0 top-0 h-2 bg-indigo-300"
-                animate={{ y: [-8, 24] }}
-                transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-              />
-            </span>
-          </span>
+          <motion.div
+            className="absolute inset-0"
+            initial={{ scale: 1.06 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: INTERVAL / 1000 + 1.2, ease: 'linear' }}
+          >
+            <Image src={s.image} alt="" fill priority={i === 0} sizes="100vw" className="object-cover" />
+          </motion.div>
+          <div className="absolute inset-0 bg-black/45" />
         </motion.div>
-      </motion.div>
+      </AnimatePresence>
+
+      <div className="mx-auto max-w-4xl px-6 text-center text-white">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.6, ease }}
+          >
+            {i === 0 ? (
+              <h1 className="text-[32px] font-semibold leading-tight md:text-5xl">{s.title}</h1>
+            ) : (
+              <p className="text-[32px] font-semibold leading-tight md:text-5xl">{s.title}</p>
+            )}
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/85 md:text-lg">{s.text}</p>
+            <Link href={s.cta.href} className="btn btn-light mt-8">
+              {s.cta.label}
+            </Link>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <Arrow side="left" onClick={() => go(-1)} />
+      <Arrow side="right" onClick={() => go(1)} />
+
+      <div className="absolute inset-x-0 bottom-8 flex flex-col items-center gap-5">
+        <div className="flex gap-2">
+          {slides.map((sl, k) => (
+            <button
+              key={sl.image}
+              type="button"
+              onClick={() => setI(k)}
+              aria-label={`Ir a la diapositiva ${k + 1}`}
+              aria-current={k === i}
+              className={`h-1.5 rounded-full transition-all duration-500 ${k === i ? 'w-8 bg-white' : 'w-1.5 bg-white/50 hover:bg-white/80'}`}
+            />
+          ))}
+        </div>
+        <a href="#nosotros" className="hidden flex-col items-center gap-2 text-xs text-white/80 hover:text-white sm:flex">
+          <span className="grid h-8 w-5 justify-center rounded-full border-2 border-white/70 pt-1.5">
+            <motion.span
+              className="block h-1.5 w-1 rounded-full bg-white"
+              animate={{ y: [0, 8, 0], opacity: [1, 0.2, 1] }}
+              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+            />
+          </span>
+          Desliza para descubrir más
+        </a>
+      </div>
     </section>
+  )
+}
+
+function Arrow({ side, onClick }: { side: 'left' | 'right'; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={side === 'left' ? 'Anterior' : 'Siguiente'}
+      className={`absolute top-1/2 hidden -translate-y-1/2 p-3 text-white/80 transition-colors hover:text-white sm:block ${side === 'left' ? 'left-3' : 'right-3'}`}
+    >
+      <svg width="22" height="40" viewBox="0 0 22 40" fill="none" aria-hidden="true">
+        <path d={side === 'left' ? 'M20 2 2 20l18 18' : 'M2 2l18 18L2 38'} stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    </button>
   )
 }

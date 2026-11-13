@@ -3,8 +3,8 @@
 Sitio de la empresa de tecnología de Grupo HEN (subdominio previsto: `gia.grupohen.com`).
 
 - Next.js 16 (App Router) + Tailwind CSS v4
-- Animaciones: `motion` (Motion for React) y `lenis` (scroll suave)
-- Base visual: plantilla **Open** de Cruip (https://github.com/cruip/open-react-template, GPL, uso comercial permitido; no se redistribuye como plantilla). Se reutilizan su paleta oscura con índigo, el texto con brillo en degradado, los bordes con degradado, el efecto spotlight y los fondos difuminados.
+- Animaciones: `motion` (apariciones suaves y carrusel del inicio)
+- Estilo claro y sobrio guiado por https://grupobusiness.it, sin degradados.
 - Imágenes generadas con ChatGPT (`public/images/*.jpg`).
 
 ## Desarrollo
@@ -19,9 +19,10 @@ Todos los textos están en `lib/content.ts`. El botón de contacto lleva al form
 
 ## Logo e íconos
 
-- `public/logo.png`: isotipo (la G con un nodo de red) con fondo transparente, generado con ChatGPT y limpiado con `sharp`.
-- `app/favicon.ico` (16, 32, 48 px), `app/icon.png`, `app/apple-icon.png`, `public/icon-192.png` y `public/icon-512.png`: íconos del sitio.
-- `assets/logo-propuestas.png`: las 4 propuestas originales de ChatGPT, por si se quiere cambiar.
+- `public/logo.png`: logotipo «GIA» con el eslogan «Business & IT Consulting» debajo, en colores planos, generado con ChatGPT y limpiado con `sharp`.
+- `app/favicon.ico` (16, 32, 48 px), `app/icon.png`, `app/apple-icon.png`, `public/icon-192.png` y `public/icon-512.png`: la G blanca sobre índigo.
+- `public/libro-reclamaciones.png`: ícono del Libro de Reclamaciones.
+- `assets/logo-propuestas.png`: las 4 propuestas originales de ChatGPT.
 
 ## SEO
 

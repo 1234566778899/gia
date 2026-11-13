@@ -18,24 +18,49 @@ export const site = {
 }
 
 export const nav = [
-  { href: '/#servicios', label: 'Servicios' },
-  { href: '/#metodo', label: 'Método' },
-  { href: '/#capacidades', label: 'Capacidades' },
+  { href: '/#nosotros', label: 'Nosotros' },
+  { href: '/#soluciones', label: 'Soluciones' },
+  { href: '/#metodo', label: 'Cómo trabajamos' },
   { href: '/contacto', label: 'Contacto' },
 ]
 
-export const marquee = [
-  ['Inteligencia artificial', 'Cloud computing', 'Ciberseguridad', 'Business intelligence', 'Arquitectura web', 'Big data'],
-  ['SaaS', 'LLMs', 'AWS', 'Azure', 'Google Cloud', 'ISO 27001', 'IoT', 'Marketplaces', 'RPA', 'Microservicios'],
+export const slides = [
+  {
+    image: '/images/hero.jpg',
+    title: 'Tecnología que impulsa tu empresa.',
+    text: 'Software, inteligencia artificial, datos, nube y ciberseguridad para transformar organizaciones públicas y privadas.',
+    cta: { href: '/contacto', label: 'Conversemos' },
+  },
+  {
+    image: '/images/ia.jpg',
+    title: 'Inteligencia artificial aplicada a tu negocio.',
+    text: 'Agentes, modelos y analítica que convierten tus datos en decisiones.',
+    cta: { href: '#soluciones', label: 'Ver soluciones' },
+  },
+  {
+    image: '/images/ciberseguridad.jpg',
+    title: 'Infraestructura segura que no se detiene.',
+    text: 'Cloud, data centers y ciberseguridad con monitoreo y respuesta ante incidentes.',
+    cta: { href: '#soluciones', label: 'Ver soluciones' },
+  },
 ]
 
-export const manifesto =
-  'Diseñamos, construimos, operamos y protegemos la tecnología de las organizaciones: del primer diagnóstico a la plataforma en producción, con datos que sirven para decidir y una infraestructura que no se detiene.'
+export const about = {
+  kicker: 'GIA Business & IT Consulting',
+  title: 'Consultoría tecnológica integral',
+  image: '/images/consultoria.jpg',
+  paragraphs: [
+    'Somos la empresa de tecnología de **Grupo HEN**. Diseñamos, construimos, operamos y protegemos la tecnología de organizaciones públicas y privadas.',
+    'Acompañamos cada proyecto **del primer diagnóstico a la plataforma en producción**: software a medida, inteligencia artificial, datos para decidir e infraestructura que no se detiene.',
+    'Un mismo equipo responde por el resultado, con entregas medibles en cada etapa.',
+  ],
+}
 
 export type Service = {
   n: string
   slug: string
   title: string
+  short: string
   kicker: string
   text: string
   tags: string[]
@@ -45,7 +70,7 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    n: '01', slug: 'software', image: '/images/software.jpg',
+    n: '01', slug: 'software', image: '/images/software.jpg', short: 'Software y plataformas cloud',
     alt: 'Cubos modulares de vidrio y titanio que representan software y microservicios',
     title: 'Ingeniería de software y plataformas cloud',
     kicker: 'SaaS · PaaS · IaaS · Apps móviles',
@@ -53,7 +78,7 @@ export const services: Service[] = [
     tags: ['Arquitectura web avanzada', 'iOS y Android', 'ERP · CRM · SCM · BPM', 'RPA', 'No-code / low-code', 'APIs y microservicios', 'Serverless'],
   },
   {
-    n: '02', slug: 'ia', image: '/images/ia.jpg',
+    n: '02', slug: 'ia', image: '/images/ia.jpg', short: 'Inteligencia artificial y datos',
     alt: 'Esfera de red neuronal con núcleo de luz cian que representa la inteligencia artificial',
     title: 'Inteligencia artificial generativa y ciencia de datos',
     kicker: 'LLMs · Agentes · Machine learning',
@@ -61,7 +86,7 @@ export const services: Service[] = [
     tags: ['Fine-tuning', 'Agentes de IA', 'Deep learning', 'Visión artificial', 'NLP', 'Big data', 'Data lakes'],
   },
   {
-    n: '03', slug: 'bi', image: '/images/bi.jpg',
+    n: '03', slug: 'bi', image: '/images/bi.jpg', short: 'Inteligencia de negocios',
     alt: 'Monolitos de vidrio atravesados por un flujo de datos que representan la analítica de negocio',
     title: 'Inteligencia de negocios y analítica empresarial',
     kicker: 'Data warehousing · Dashboards · KPIs',
@@ -69,7 +94,7 @@ export const services: Service[] = [
     tags: ['Data warehousing', 'ETL / ELT', 'Modelado dimensional', 'Dashboards ejecutivos', 'Reportería en tiempo real', 'KPIs'],
   },
   {
-    n: '04', slug: 'cloud', image: '/images/cloud.jpg',
+    n: '04', slug: 'cloud', image: '/images/cloud.jpg', short: 'Infraestructura, cloud y hosting',
     alt: 'Plataformas de vidrio apiladas que representan la infraestructura cloud',
     title: 'Infraestructura digital, cloud y hosting',
     kicker: 'AWS · Azure · Google Cloud · Data centers',
@@ -77,7 +102,7 @@ export const services: Service[] = [
     tags: ['Multi-cloud', 'Nube híbrida', 'Data centers', 'Web hosting', 'VPS y dedicados', 'Dominios', 'CDN'],
   },
   {
-    n: '05', slug: 'ciberseguridad', image: '/images/ciberseguridad.jpg',
+    n: '05', slug: 'ciberseguridad', image: '/images/ciberseguridad.jpg', short: 'Ciberseguridad',
     alt: 'Núcleo de luz protegido dentro de esferas de cristal que representa la ciberseguridad',
     title: 'Ciberseguridad integral y protección de datos',
     kicker: 'Pentesting · SOC · Cumplimiento',
@@ -85,7 +110,7 @@ export const services: Service[] = [
     tags: ['Pentesting', 'SOC', 'Respuesta a incidentes', 'IAM', 'ISO 27001', 'GDPR · SOC 2', 'BCP · DRP'],
   },
   {
-    n: '06', slug: 'consultoria', image: '/images/consultoria.jpg',
+    n: '06', slug: 'consultoria', image: '/images/consultoria.jpg', short: 'Consultoría IT y telecom',
     alt: 'Escalones de metal unidos por una ruta de luz hacia un prisma que representan la estrategia tecnológica',
     title: 'Consultoría IT, telecomunicaciones y tecnologías emergentes',
     kicker: 'Gobierno de TI · PMO · IoT · VR/AR',
@@ -93,7 +118,7 @@ export const services: Service[] = [
     tags: ['Transformación digital', 'Auditoría de sistemas', 'PMO', 'Arquitectura empresarial', 'Fibra óptica', 'IoT', 'VR · AR'],
   },
   {
-    n: '07', slug: 'marketplaces', image: '/images/marketplaces.jpg',
+    n: '07', slug: 'marketplaces', image: '/images/marketplaces.jpg', short: 'Marketplaces y e-commerce',
     alt: 'Globo de vidrio con rutas de luz que conectan tiendas flotantes y representan el comercio global',
     title: 'Ecosistemas digitales, e-commerce y marketplaces',
     kicker: 'B2B · B2C · C2C · Transfronterizo',
@@ -101,7 +126,7 @@ export const services: Service[] = [
     tags: ['Multivendedor', 'Pasarelas de pago', 'Billeteras digitales', 'Escrow', 'Recomendación', 'Operación global'],
   },
   {
-    n: '08', slug: 'hardware', image: '/images/hardware.jpg',
+    n: '08', slug: 'hardware', image: '/images/hardware.jpg', short: 'Hardware y equipos',
     alt: 'Servidor rack, tarjeta gráfica y procesador iluminados en índigo y cian',
     title: 'Hardware y equipos tecnológicos',
     kicker: 'Venta · Importación · Leasing · Soporte',

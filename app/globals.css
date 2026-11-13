@@ -1,132 +1,77 @@
 @import "tailwindcss";
 
-/* Base visual tomada de la plantilla "Open" de Cruip (fondo oscuro, acentos índigo,
-   texto con brillo en degradado, bordes con degradado) y ampliada con tipografía grande. */
+/* Estilo claro y sobrio, guiado por grupobusiness.it: fondo blanco, paneles grises, títulos en
+   mayúsculas (Exo) con una barra de acento y texto en Montserrat. El acento es el índigo plano del logo GIA, sin degradados. */
 
 @theme inline {
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-exo), var(--font-montserrat), ui-sans-serif, sans-serif;
 }
 
 @theme {
-  --color-ink: #05060a;
-
-  --animate-gradient: gradient 6s linear infinite;
-  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
-
-  @keyframes gradient {
-    to {
-      background-position: 200% center;
-    }
-  }
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
+  --color-ink: #1d1d1f;
+  --color-muted: #5f6368;
+  --color-panel: #f3f3f3;
+  --color-line: #e7e7e7;
+  --color-brand: #3730a3;
 }
 
 @layer base {
-  *,
-  ::after,
-  ::before {
-    border-color: var(--color-gray-800, currentColor);
-  }
   html {
-    background: var(--color-ink);
-    color-scheme: dark;
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    color-scheme: light;
   }
   body {
-    background: var(--color-ink);
+    background: #fff;
+    color: var(--color-ink);
   }
   ::selection {
-    background: var(--color-indigo-500);
+    background: var(--color-brand);
     color: white;
   }
 }
 
-/* Lenis */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-@utility text-shine {
-  background-image: linear-gradient(to right, var(--color-gray-200), var(--color-indigo-200), var(--color-gray-50), var(--color-indigo-300), var(--color-gray-200));
-  background-size: 200% auto;
-  background-clip: text;
-  color: transparent;
-  animation: var(--animate-gradient);
-}
-
-@utility text-accent {
-  background-image: linear-gradient(to right, var(--color-indigo-400), var(--color-sky-300), var(--color-cyan-300));
-  background-clip: text;
-  color: transparent;
-}
-
-@utility text-outline {
-  color: transparent;
-  -webkit-text-stroke: 1px rgb(165 180 252 / 0.35);
-}
-
-@utility hairline {
-  border-top-width: 1px;
-  border-image: linear-gradient(to right, transparent, rgb(148 163 184 / 0.25), transparent) 1;
-}
-
-/* Borde con degradado (de "Open") */
-@utility border-gradient {
-  position: relative;
-  &::before {
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    z-index: 30;
-    border-radius: inherit;
-    border: 1px solid transparent;
-    background: linear-gradient(to right, var(--color-gray-800), var(--color-gray-700), var(--color-gray-800)) border-box;
-    mask: linear-gradient(white 0 0) padding-box, linear-gradient(white 0 0);
-    mask-composite: exclude;
-  }
+/* Barra de acento bajo los títulos (color plano: el usuario no quiere degradados) */
+@utility accent-bar {
+  display: block;
+  width: 88px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-brand);
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3.5 text-sm font-medium transition-all;
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-6 py-3 text-sm font-semibold transition-colors;
+  }
+  .btn-light {
+    @apply bg-white text-ink shadow-sm hover:bg-gray-100;
   }
   .btn-primary {
-    @apply bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-bottom text-white shadow-[inset_0px_1px_0px_0px_rgb(255_255_255/.16),0_10px_40px_-10px_var(--color-indigo-500)] hover:bg-[length:100%_150%];
+    @apply bg-brand text-white hover:bg-indigo-900;
   }
-  .btn-ghost {
-    @apply border-gradient bg-linear-to-b from-gray-800 to-gray-800/60 text-gray-200 hover:from-gray-700;
+  .btn-outline {
+    @apply border border-ink/20 text-ink hover:border-ink/40 hover:bg-black/[0.03];
   }
-  .eyebrow {
-    @apply inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-indigo-200/70 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-indigo-300/60;
+  .section-title {
+    @apply font-display text-[28px] font-semibold uppercase leading-tight text-ink/90 md:text-[40px];
+  }
+  .kicker {
+    @apply font-display text-sm font-semibold uppercase tracking-[0.12em] text-brand;
   }
 }
 
 /* Texto legal */
 @layer components {
   .legal {
-    @apply text-base leading-relaxed text-gray-300 md:text-[17px];
+    @apply text-[15px] leading-relaxed text-muted md:text-base;
   }
   .legal h2 {
-    @apply mt-14 scroll-mt-28 text-2xl font-semibold tracking-tight text-white md:text-3xl;
+    @apply mt-12 scroll-mt-24 font-display text-xl font-semibold uppercase text-ink md:text-2xl;
   }
   .legal h3 {
-    @apply mt-8 text-lg font-semibold text-white;
+    @apply mt-8 text-lg font-semibold text-ink;
   }
   .legal p,
   .legal ul,
@@ -135,26 +80,26 @@ html.lenis body {
     @apply mt-4;
   }
   .legal ul {
-    @apply list-disc space-y-2 pl-5 marker:text-indigo-400;
+    @apply list-disc space-y-2 pl-5 marker:text-brand;
   }
   .legal ol {
-    @apply list-decimal space-y-2 pl-5 marker:text-indigo-400;
+    @apply list-decimal space-y-2 pl-5 marker:text-brand;
   }
   .legal a {
-    @apply text-indigo-300 underline decoration-indigo-400/40 underline-offset-4 hover:decoration-indigo-300;
+    @apply text-brand underline decoration-brand/30 underline-offset-4 hover:decoration-brand;
   }
   .legal strong {
-    @apply font-semibold text-white;
+    @apply font-semibold text-ink;
   }
   .legal table {
     @apply w-full border-collapse text-sm;
   }
   .legal th,
   .legal td {
-    @apply border border-white/10 px-3 py-2 text-left align-top;
+    @apply border border-line px-3 py-2 text-left align-top;
   }
   .legal th {
-    @apply bg-white/[0.04] font-semibold text-white;
+    @apply bg-panel font-semibold text-ink;
   }
 }
 
@@ -166,9 +111,6 @@ html.lenis body {
   .print-area,
   .print-area * {
     visibility: visible;
-    color: #000 !important;
-    background: #fff !important;
-    border-color: #999 !important;
   }
   .print-area {
     position: absolute;
@@ -177,11 +119,13 @@ html.lenis body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
 }

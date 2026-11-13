@@ -69,7 +69,7 @@ export function ClaimForm() {
           Soy menor de edad (se registran los datos del padre, madre o representante).
         </Check>
         {showMinor && (
-          <div className="grid gap-5 rounded-2xl border border-white/10 p-5 sm:grid-cols-2">
+          <div className="grid gap-5 rounded-md border border-line bg-panel p-5 sm:grid-cols-2">
             <Input name="gName" label="Nombre del padre, madre o representante" required defaultValue={v.gName} error={e.gName} className="sm:col-span-2" />
             <Input name="gAddress" label="Domicilio" required defaultValue={v.gAddress} error={e.gAddress} className="sm:col-span-2" />
             <Input name="gPhone" label="Teléfono" type="tel" required defaultValue={v.gPhone} error={e.gPhone} />
@@ -125,7 +125,7 @@ export function ClaimForm() {
 
       <Check name="accept" defaultChecked={v.accept === 'on'} error={e.accept}>
         Declaro que los datos son verdaderos y autorizo su tratamiento para atender esta hoja conforme a la{' '}
-        <Link href="/politica-de-privacidad" className="text-indigo-300 underline underline-offset-2">
+        <Link href="/politica-de-privacidad" className="text-brand underline underline-offset-2">
           política de privacidad
         </Link>
         .
@@ -137,18 +137,18 @@ export function ClaimForm() {
 
 function SheetHeader({ number, date }: { number: string; date: string }) {
   return (
-    <div className="grid gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5 text-sm sm:grid-cols-2">
+    <div className="grid gap-4 rounded-md border border-line bg-panel p-5 text-sm sm:grid-cols-2">
       <div>
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Proveedor</p>
-        <p className="mt-1 text-gray-200"><Value v={company.legalName} /></p>
-        <p className="mt-1 text-gray-400">RUC <Value v={company.ruc} /></p>
-        <p className="mt-1 text-gray-400"><Value v={company.address} /></p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted">Proveedor</p>
+        <p className="mt-1 text-ink"><Value v={company.legalName} /></p>
+        <p className="mt-1 text-muted">RUC <Value v={company.ruc} /></p>
+        <p className="mt-1 text-muted"><Value v={company.address} /></p>
       </div>
       <div className="sm:text-right">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Hoja de reclamación N.°</p>
-        <p className="mt-1 text-gray-200">{number}</p>
-        <p className="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-gray-500">Fecha</p>
-        <p className="mt-1 text-gray-200">{date}</p>
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted">Hoja de reclamación N.°</p>
+        <p className="mt-1 text-ink">{number}</p>
+        <p className="mt-3 text-xs font-semibold uppercase tracking-wider text-muted">Fecha</p>
+        <p className="mt-1 text-ink">{date}</p>
       </div>
     </div>
   )
@@ -157,8 +157,8 @@ function SheetHeader({ number, date }: { number: string; date: string }) {
 function Section({ n, title, children }: { n: string; title: string; children: React.ReactNode }) {
   return (
     <fieldset className="space-y-5">
-      <legend className="mb-5 flex items-center gap-3 text-lg font-semibold text-white">
-        <span className="grid size-7 place-items-center rounded-full bg-indigo-500/15 font-mono text-xs text-indigo-300">{n}</span>
+      <legend className="mb-5 flex items-center gap-3 font-display text-lg font-semibold uppercase text-ink">
+        <span className="grid size-7 place-items-center rounded-full bg-brand text-xs font-semibold text-white">{n}</span>
         {title}
       </legend>
       {children}
@@ -168,9 +168,9 @@ function Section({ n, title, children }: { n: string; title: string; children: R
 
 function Legends() {
   return (
-    <div className="space-y-2 rounded-2xl border border-white/10 p-5 text-xs leading-relaxed text-gray-400">
-      <p><strong className="text-gray-200">Reclamo:</strong> {DEFINITIONS.reclamo}</p>
-      <p><strong className="text-gray-200">Queja:</strong> {DEFINITIONS.queja}</p>
+    <div className="space-y-2 rounded-md border border-line bg-panel p-5 text-xs leading-relaxed text-muted">
+      <p><strong className="text-ink">Reclamo:</strong> {DEFINITIONS.reclamo}</p>
+      <p><strong className="text-ink">Queja:</strong> {DEFINITIONS.queja}</p>
       <p>
         La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es requisito previo
         para interponer una denuncia ante el INDECOPI.
@@ -202,22 +202,22 @@ function Receipt({ claim }: { claim: RegisteredClaim }) {
   return (
     <div className="space-y-6">
       <Notice tone="ok">
-        <strong className="block text-base text-white">Hoja de reclamación N.° {claim.number} registrada</strong>
+        <strong className="block text-base text-ink">Hoja de reclamación N.° {claim.number} registrada</strong>
         Enviamos una copia a {claim.consumer.email}. Te responderemos en un plazo no mayor a quince (15) días hábiles.
       </Notice>
-      <div className="print-area rounded-2xl border border-white/10 p-6 text-sm">
-        <h2 className="text-lg font-semibold text-white">Libro de Reclamaciones · Hoja N.° {claim.number}</h2>
-        <p className="mt-1 text-gray-400">Registrada el {created}</p>
-        <dl className="mt-5 divide-y divide-white/10">
+      <div className="print-area rounded-md border border-line p-6 text-sm">
+        <h2 className="text-lg font-semibold text-ink">Libro de Reclamaciones · Hoja N.° {claim.number}</h2>
+        <p className="mt-1 text-muted">Registrada el {created}</p>
+        <dl className="mt-5 divide-y divide-line">
           {rows.map(([k, val]) => (
             <div key={k} className="grid gap-1 py-2.5 sm:grid-cols-[14rem_1fr]">
-              <dt className="text-gray-500">{k}</dt>
-              <dd className="whitespace-pre-line text-gray-200">{val}</dd>
+              <dt className="text-muted">{k}</dt>
+              <dd className="whitespace-pre-line text-ink">{val}</dd>
             </div>
           ))}
         </dl>
       </div>
-      <button type="button" onClick={() => window.print()} className="btn btn-ghost">
+      <button type="button" onClick={() => window.print()} className="btn btn-outline">
         Imprimir o guardar en PDF
       </button>
     </div>

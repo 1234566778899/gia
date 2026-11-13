@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useActionState } from 'react'
+import { useActionState, useEffect } from 'react'
 import { submitContact, type FormState } from '@/app/actions'
 import { services } from '@/lib/content'
 import { Check, Honeypot, Input, Notice, Select, Submit, TextArea } from './form-ui'
@@ -11,10 +11,17 @@ const initial: FormState = { status: 'idle' }
 export function ContactForm() {
   const [state, action] = useActionState(submitContact, initial)
 
+  // Si se llega desde una tarjeta de Soluciones (?servicio=ia), se preselecciona ese servicio
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get('servicio')
+    const select = document.getElementById('service') as HTMLSelectElement | null
+    if (slug && select && services.some((s) => s.slug === slug)) select.value = slug
+  }, [])
+
   if (state.status === 'ok') {
     return (
       <Notice tone="ok">
-        <strong className="block text-base text-white">¡Gracias! Recibimos tu mensaje.</strong>
+        <strong className="block text-base text-ink">¡Gracias! Recibimos tu mensaje.</strong>
         Un consultor de GIA revisará tu caso y te escribirá al correo que dejaste.
       </Notice>
     )
@@ -62,7 +69,7 @@ export function ContactForm() {
       />
       <Check name="privacy" defaultChecked={v.privacy === 'on'} error={e.privacy}>
         He leído la{' '}
-        <Link href="/politica-de-privacidad" className="text-indigo-300 underline underline-offset-2">
+        <Link href="/politica-de-privacidad" className="text-brand underline underline-offset-2">
           política de privacidad
         </Link>{' '}
         y autorizo el uso de mis datos para responder a mi consulta.
