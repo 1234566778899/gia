@@ -22,10 +22,10 @@ export default function OpengraphImage() {
     (
       <div style={{ width: '100%', height: '100%', display: 'flex', background: '#ffffff', fontFamily: 'Montserrat' }}>
         <div style={{ width: 640, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '64px 64px 56px' }}>
-          <img src={logoSrc} width={260} height={110} alt="" />
+          <img src={logoSrc} width={300} height={114} alt="" />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ fontSize: 54, fontWeight: 600, lineHeight: 1.1, color: '#1d1d1f' }}>Tecnología que impulsa tu empresa.</div>
-            <div style={{ width: 88, height: 5, background: '#3730a3', marginTop: 28 }} />
+            <div style={{ width: 88, height: 5, background: '#1e3a8a', marginTop: 28 }} />
           </div>
           <div style={{ fontSize: 22, fontWeight: 400, color: '#5f6368' }}>Software · IA · Datos · Cloud · Ciberseguridad</div>
         </div>

@@ -116,7 +116,7 @@ export function Choice({
         {options.map((o) => (
           <label
             key={o.value}
-            className="flex cursor-pointer gap-3 rounded-md border border-line bg-white p-4 transition-colors has-[:checked]:border-brand has-[:checked]:bg-indigo-50"
+            className="flex cursor-pointer gap-3 rounded-md border border-line bg-white p-4 transition-colors has-[:checked]:border-brand has-[:checked]:bg-blue-50"
           >
             <input type="radio" name={name} value={o.value} defaultChecked={defaultValue === o.value} className="mt-1 accent-[#4f46e5]" />
             <span>

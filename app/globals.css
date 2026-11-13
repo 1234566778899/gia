@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* Estilo claro y sobrio, guiado por grupobusiness.it: fondo blanco, paneles grises, títulos en
-   mayúsculas (Exo) con una barra de acento y texto en Montserrat. El acento es el índigo plano del logo GIA, sin degradados. */
+   mayúsculas (Exo) con una barra de acento y texto en Montserrat. El acento es el azul marino plano del logo GIA (#1e3a8a), sin degradados. */
 
 @theme inline {
   --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
@@ -13,7 +13,7 @@
   --color-muted: #5f6368;
   --color-panel: #f3f3f3;
   --color-line: #e7e7e7;
-  --color-brand: #3730a3;
+  --color-brand: #1e3a8a;
 }
 
 @layer base {
@@ -49,7 +49,7 @@
     @apply bg-white text-ink shadow-sm hover:bg-gray-100;
   }
   .btn-primary {
-    @apply bg-brand text-white hover:bg-indigo-900;
+    @apply bg-brand text-white hover:bg-blue-950;
   }
   .btn-outline {
     @apply border border-ink/20 text-ink hover:border-ink/40 hover:bg-black/[0.03];

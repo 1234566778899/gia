@@ -12,13 +12,13 @@ marketplaces y hardware). Una sola página de portada más contacto, Libro de Re
   (#f3f3f3), títulos `.section-title` (Exo, mayúsculas) con `.accent-bar`, texto en Montserrat, hero en carrusel
   a pantalla completa y pie gris con barra negra. Acento: índigo→cian del logo. Animación solo con `FadeIn`;
   el usuario pidió quitar lo recargado (texto gigante, cintas, tarjetas apiladas, scroll horizontal).
-- **Nada de degradados** (el usuario los rechazó): colores planos, acento índigo `#3730a3` (`--color-brand`).
-- Marca: logotipo «GIA» con el eslogan «BUSINESS & IT CONSULTING» debajo (`public/logo.png`), favicon con la G
-  blanca sobre índigo y el ícono del Libro de Reclamaciones (`public/libro-reclamaciones.png`), todo generado con
-  ChatGPT y limpiado con `sharp`. Las 4 propuestas originales están en `assets/logo-propuestas.png`.
-  `<Logo />` (header): «GIA» (`public/logo-gia.png`) con el eslogan al lado en dos líneas como texto HTML, porque
-  debajo y en imagen no se leía a ese tamaño;
-  `<Logo variant="full" />` (con eslogan) va en el pie y en tamaños grandes.
+- **Nada de degradados** (el usuario los rechazó): colores planos, acento azul marino `#1e3a8a` (`--color-brand`).
+- Marca (desde 2026-11-12, tercera versión): cubo isométrico + «GIA» en azul marino + eslogan «BUSINESS & IT
+  CONSULTING» en gris `#4b5563`, generado con ChatGPT (el usuario eligió entre 4; están en
+  `assets/logo-propuestas.png`). Rechazó antes la G con nodo en degradado y el «GIA» grueso sin símbolo.
+  Archivos: `public/logo.png` (completo), `public/logo-cube.png`, `public/logo-gia.png`; favicon = cubo blanco
+  sobre azul marino. `<Logo />` (header) arma el diseño por partes con el eslogan como texto, porque en imagen
+  medía ~5 px; `<Logo variant="full" />` va en el pie.
 - El «GIA» gigante en contorno del pie se quitó a pedido del usuario (2026-11-12). RUC y razón social no van en el pie;
   solo en la hoja del Libro de Reclamaciones y en las páginas legales, donde la ley los exige.
 
