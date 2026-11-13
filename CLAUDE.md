@@ -36,6 +36,9 @@ marketplaces y hardware). Una sola página de portada más contacto, Libro de Re
 - Las imágenes se generan con ChatGPT (modo Work, GPT-6 Astra) desde Claude in Chrome. ChatGPT bloquea
   peticiones a localhost: se descargan a `~/Downloads` y se mueven. En su caja de texto un salto de línea envía
   el mensaje, así que los prompts van en una sola línea.
+- Sección «Normas y buenas prácticas» (`components/standards.tsx`, datos `standards`): se presentan como «aplicamos»,
+  no como certificaciones de GIA. Hubo una parte de logos de tecnologías por pestañas y el usuario la quitó por
+  recargada (2026-11-12): no volver a agregarla.
 - Imágenes: fotos en `assets/images/`, logos de clientes en `assets/clients/`, siempre con **importación estática**
   (URL con hash, caché `immutable` y `placeholder="blur"` automático). No ponerlas en `public/` como texto: eso
   da caché de 4 h y un cuadro vacío mientras cargan. Imágenes que cambian en carrusel: dejarlas todas montadas

@@ -159,13 +159,14 @@ export const method = [
   { n: '04', title: 'Operación', text: 'Desplegamos, monitoreamos y protegemos la plataforma, y la hacemos crecer con el negocio.' },
 ]
 
-export const capabilities = [
-  { title: 'Cloud', items: ['AWS', 'Microsoft Azure', 'Google Cloud', 'Nube propia'] },
-  { title: 'Datos e IA', items: ['LLMs', 'Machine learning', 'Data lakes', 'ETL / ELT'] },
-  { title: 'Seguridad', items: ['ISO 27001', 'GDPR', 'SOC 2', 'IAM'] },
-  { title: 'Software', items: ['SaaS', 'Microservicios', 'Serverless', 'Apps móviles'] },
-  { title: 'Redes', items: ['Fibra óptica', 'Inalámbricas', 'IoT', 'Domótica'] },
-  { title: 'Negocio', items: ['ERP', 'CRM', 'BPM', 'RPA'] },
+/** Normas y buenas prácticas que GIA aplica en sus proyectos (no son certificaciones de GIA). */
+export const standards = [
+  { code: 'ISO/IEC 27001', title: 'Seguridad de la información', text: 'Gestión de riesgos y controles para proteger la información.' },
+  { code: 'SOC 2', title: 'Controles de servicio', text: 'Seguridad, disponibilidad y confidencialidad en servicios cloud.' },
+  { code: 'GDPR', title: 'Privacidad global', text: 'Tratamiento de datos personales para operaciones con Europa.' },
+  { code: 'Ley N.° 29733', title: 'Datos personales en Perú', text: 'Protección de datos personales según la normativa peruana.' },
+  { code: 'ITIL 4', title: 'Gestión de servicios TI', text: 'Soporte, incidentes y mejora continua de los servicios.' },
+  { code: 'Scrum · PMBOK', title: 'Gestión de proyectos', text: 'Entregas por etapas, con alcance, plazos y riesgos controlados.' },
 ]
 
 /**

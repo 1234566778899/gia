@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import imgCta from '@/assets/images/cta.jpg'
-import { about, capabilities, method, services } from '@/lib/content'
+import { about, method, services } from '@/lib/content'
 import { FadeIn } from './motion-kit'
 import { SectionTitle } from './section-title'
 
@@ -88,33 +88,6 @@ export function Method() {
                 <span className="font-display text-3xl font-semibold text-brand/90">{m.n}</span>
                 <h3 className="mt-4 text-lg font-semibold text-ink">{m.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{m.text}</p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-export function Capabilities() {
-  return (
-    <section id="capacidades" className="py-16 md:py-24">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <SectionTitle title="Plataformas y normas" />
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {capabilities.map((c, k) => (
-            <FadeIn key={c.title} delay={(k % 3) * 0.06}>
-              <div className="h-full rounded-md border border-line bg-white p-7 transition-shadow hover:shadow-[0_6px_24px_rgba(0,0,0,0.06)]">
-                <h3 className="font-display text-lg font-semibold uppercase text-ink">{c.title}</h3>
-                <ul className="mt-4 space-y-2 text-[15px] text-muted">
-                  {c.items.map((it) => (
-                    <li key={it} className="flex items-center gap-3">
-                      <span className="size-1.5 rounded-full bg-brand" />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </FadeIn>
           ))}
