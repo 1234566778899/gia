@@ -7,17 +7,20 @@ export const pending = (label: string): Maybe => ({ pending: label })
 export const isPending = (v: Maybe): v is { pending: string } => typeof v !== 'string'
 export const text = (v: Maybe) => (isPending(v) ? `[${v.pending}]` : v)
 
+/**
+ * PROVISIONAL: razón social, RUC, domicilio, correos y teléfono son DE EJEMPLO a pedido del usuario (formato
+ * válido, RUC con dígito verificador correcto, pero no son datos reales de GIA). Reemplazar por los datos de la
+ * ficha RUC de SUNAT antes de publicar: el Libro de Reclamaciones y la política de privacidad los exigen reales.
+ */
 export const company = {
   tradeName: 'GIA Business & IT Consulting',
-  legalName: pending('Razón social'),
-  ruc: pending('RUC'),
-  address: pending('Domicilio fiscal'),
-  email: pending('Correo de contacto'),
-  claimsEmail: pending('Correo para reclamos y datos personales'),
-  phone: pending('Teléfono'),
+  legalName: 'GIA Business & IT Consulting S.A.C.',
+  ruc: '20614827352',
+  address: 'Av. Javier Prado Este 1234, Of. 801, San Isidro, Lima',
+  email: 'contacto@gia.grupohen.com',
+  claimsEmail: 'reclamos@gia.grupohen.com',
+  phone: '+51 1 640 2580',
   hours: 'Lunes a viernes, de 9:00 a 18:00 (hora de Perú)',
-  /** Código de inscripción del banco de datos personales ante la ANPD, cuando exista. */
-  dataBankCode: pending('Código de inscripción del banco de datos ante la ANPD'),
 }
 
 export const legalUpdated = '12 de noviembre de 2026'

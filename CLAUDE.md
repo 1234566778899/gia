@@ -49,13 +49,15 @@ marketplaces y hardware). Una sola página de portada más contacto, Libro de Re
 
 ## Pendiente antes de publicar
 
-1. Datos legales en `lib/legal.ts`: razón social, RUC, domicilio fiscal, correo de contacto, correo para reclamos
-   y datos personales, teléfono y código del banco de datos ante la ANPD.
+1. Datos legales en `lib/legal.ts`: razón social, RUC, domicilio fiscal, correos y teléfono son DE EJEMPLO a pedido
+   del usuario (RUC 20614827352 con formato válido, no es de GIA). Reemplazar por los de la ficha RUC de SUNAT.
+   La política de privacidad no menciona aún el código del banco de datos ante la ANPD ni los nombres de los
+   proveedores de base de datos y correo: agregarlos cuando existan (secciones «Banco de datos» y «Destinatarios»).
 2. Crear el proyecto en Vercel y, desde el Marketplace, instalar base de datos y correo para `lib/delivery.ts`.
    El Libro de Reclamaciones exige número correlativo, copia automática al correo del consumidor con fecha y hora
    (art. 4-B) y conservar las hojas 2 años (art. 12, D.S. 011-2011-PCM). Hasta entonces los formularios responden
    «el envío todavía no está activo».
-3. Nombrar esos proveedores en la política de privacidad (sección «Destinatarios y transferencias»).
+3. Nombrar esos proveedores en la política de privacidad (sección «Destinatarios y transferencias»), con su país.
 4. En Vercel, opcional: `NEXT_PUBLIC_GA_ID` (Analytics, solo si el visitante acepta cookies) y
    `GOOGLE_SITE_VERIFICATION` (Search Console).
 5. DNS: el dominio `grupohen.com` ya usa los nameservers de Hosting SSD, así que el CNAME de `gia` se crea en el

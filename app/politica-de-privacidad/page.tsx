@@ -88,8 +88,8 @@ export default function PrivacyPage() {
 
         <h2 id="banco">5. Banco de datos</h2>
         <p>
-          Los datos se almacenan en los bancos de datos personales de titularidad de GIA, inscritos ante la Autoridad
-          Nacional de Protección de Datos Personales con el código <Value v={company.dataBankCode} />.
+          Los datos se almacenan en los bancos de datos personales de titularidad de GIA, que se inscriben ante la
+          Autoridad Nacional de Protección de Datos Personales conforme a la normativa vigente.
         </p>
 
         <h2 id="destinatarios">6. Destinatarios y transferencias</h2>
@@ -100,7 +100,7 @@ export default function PrivacyPage() {
           <li>Vercel Inc. (Estados Unidos): alojamiento del sitio web.</li>
           <li>Google LLC (Estados Unidos): Google Analytics, solo si aceptas las cookies de analítica.</li>
           <li>
-            Proveedores de base de datos y de correo electrónico para recibir los formularios: <Value v={{ pending: 'Nombre y país de los proveedores' }} />.
+            Proveedores de base de datos y de correo electrónico que reciben y conservan los formularios de este sitio.
           </li>
         </ul>
         <p>

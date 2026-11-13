@@ -5,7 +5,6 @@ import { FadeIn } from '@/components/motion-kit'
 import { Offices } from '@/components/offices'
 import { PageHero } from '@/components/page-hero'
 import { Socials } from '@/components/socials'
-import { Value } from '@/components/value'
 import { company } from '@/lib/legal'
 
 export const metadata: Metadata = {
@@ -43,8 +42,8 @@ export default function ContactPage() {
             <div className="rounded-md bg-panel p-6 sm:p-8">
               <h2 className="font-display text-lg font-semibold uppercase text-ink">Datos de contacto</h2>
               <dl className="mt-5 space-y-4 text-[15px]">
-                <Info label="Correo"><Value v={company.email} /></Info>
-                <Info label="Teléfono"><Value v={company.phone} /></Info>
+                <Info label="Correo"><a href={`mailto:${company.email}`} className="text-brand hover:underline">{company.email}</a></Info>
+                <Info label="Teléfono"><a href={`tel:${company.phone.replace(/\s/g, '')}`} className="text-brand hover:underline">{company.phone}</a></Info>
                 <Info label="Horario">{company.hours}</Info>
                 <Info label="Síguenos"><Socials className="mt-2" /></Info>
               </dl>
