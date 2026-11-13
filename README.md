@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GIA Business & IT Consulting
 
-## Getting Started
+Sitio de la empresa de tecnología de Grupo HEN (subdominio previsto: `gia.grupohen.com`).
 
-First, run the development server:
+- Next.js 16 (App Router) + Tailwind CSS v4
+- Animaciones: `motion` (Motion for React) y `lenis` (scroll suave)
+- Base visual: plantilla **Open** de Cruip (https://github.com/cruip/open-react-template, GPL, uso comercial permitido; no se redistribuye como plantilla). Se reutilizan su paleta oscura con índigo, el texto con brillo en degradado, los bordes con degradado, el efecto spotlight y los fondos difuminados.
+- Imágenes generadas con ChatGPT (`public/images/*.jpg`).
+
+## Desarrollo
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contenido
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Todos los textos están en `lib/content.ts`. El botón de contacto lleva al formulario de grupohen.com hasta que GIA tenga correo propio.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Logo e íconos
 
-## Learn More
+- `public/logo.png`: isotipo (la G con un nodo de red) con fondo transparente, generado con ChatGPT y limpiado con `sharp`.
+- `app/favicon.ico` (16, 32, 48 px), `app/icon.png`, `app/apple-icon.png`, `public/icon-192.png` y `public/icon-512.png`: íconos del sitio.
+- `assets/logo-propuestas.png`: las 4 propuestas originales de ChatGPT, por si se quiere cambiar.
 
-To learn more about Next.js, take a look at the following resources:
+## SEO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Metadatos completos en `app/layout.tsx` (título, descripción, palabras clave, canonical, Open Graph, Twitter y robots).
+- Imagen para redes generada en `app/opengraph-image.tsx` (1200×630).
+- `robots.txt`, `sitemap.xml` (con imágenes) y `manifest.webmanifest`.
+- Datos estructurados schema.org (Organization + ProfessionalService con los 8 servicios, y WebSite) en `components/json-ld.tsx`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Variables opcionales en Vercel (Production):
 
-## Deploy on Vercel
+| Variable | Para qué |
+|---|---|
+| `NEXT_PUBLIC_GA_ID` | ID de Google Analytics 4 (`G-…`). Sin ella no se carga Analytics. |
+| `GOOGLE_SITE_VERIFICATION` | Código de verificación de Google Search Console (método «etiqueta HTML»). |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Si el subdominio final no es `gia.grupohen.com`, cambia `site.url` en `lib/content.ts`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Páginas
+
+| Ruta | Contenido |
+|---|---|
+| `/` | Portada |
+| `/contacto` | Formulario de contacto y datos de la empresa |
+| `/libro-de-reclamaciones` | Hoja de Reclamación virtual (D.S. 011-2011-PCM, mod. D.S. 101-2022-PCM) |
+| `/politica-de-privacidad` | Ley 29733 de Protección de Datos Personales |
+| `/terminos-y-condiciones` | Condiciones de uso del sitio |
+| `/politica-de-cookies` | Cookies y su configuración (aviso de consentimiento en todo el sitio) |
+
+## Pendiente antes de publicar
+
+1. **Datos legales** en `lib/legal.ts`: razón social, RUC, domicilio fiscal, correo de contacto, correo para reclamos y datos personales, teléfono y código del banco de datos ante la ANPD. Mientras falten se ven resaltados en ámbar en el sitio.
+2. **Envío de formularios** en `lib/delivery.ts`: al crear el proyecto en Vercel, instalar desde el Marketplace una base de datos (numeración correlativa y conservación 2 años de las hojas de reclamación) y un proveedor de correo (copia automática al consumidor y aviso a GIA). Hasta entonces los formularios validan, pero avisan que el envío no está activo.
+3. Nombrar a esos proveedores en la política de privacidad (sección «Destinatarios y transferencias»).
+4. Revisión de los textos legales por un abogado.

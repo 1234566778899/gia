@@ -1,26 +1,187 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Base visual tomada de la plantilla "Open" de Cruip (fondo oscuro, acentos índigo,
+   texto con brillo en degradado, bordes con degradado) y ampliada con tipografía grande. */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --color-ink: #05060a;
+
+  --animate-gradient: gradient 6s linear infinite;
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+
+  @keyframes gradient {
+    to {
+      background-position: 200% center;
+    }
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  *,
+  ::after,
+  ::before {
+    border-color: var(--color-gray-800, currentColor);
+  }
+  html {
+    background: var(--color-ink);
+    color-scheme: dark;
+  }
+  body {
+    background: var(--color-ink);
+  }
+  ::selection {
+    background: var(--color-indigo-500);
+    color: white;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@utility text-shine {
+  background-image: linear-gradient(to right, var(--color-gray-200), var(--color-indigo-200), var(--color-gray-50), var(--color-indigo-300), var(--color-gray-200));
+  background-size: 200% auto;
+  background-clip: text;
+  color: transparent;
+  animation: var(--animate-gradient);
+}
+
+@utility text-accent {
+  background-image: linear-gradient(to right, var(--color-indigo-400), var(--color-sky-300), var(--color-cyan-300));
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px rgb(165 180 252 / 0.35);
+}
+
+@utility hairline {
+  border-top-width: 1px;
+  border-image: linear-gradient(to right, transparent, rgb(148 163 184 / 0.25), transparent) 1;
+}
+
+/* Borde con degradado (de "Open") */
+@utility border-gradient {
+  position: relative;
+  &::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    border-radius: inherit;
+    border: 1px solid transparent;
+    background: linear-gradient(to right, var(--color-gray-800), var(--color-gray-700), var(--color-gray-800)) border-box;
+    mask: linear-gradient(white 0 0) padding-box, linear-gradient(white 0 0);
+    mask-composite: exclude;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3.5 text-sm font-medium transition-all;
+  }
+  .btn-primary {
+    @apply bg-linear-to-t from-indigo-600 to-indigo-500 bg-[length:100%_100%] bg-bottom text-white shadow-[inset_0px_1px_0px_0px_rgb(255_255_255/.16),0_10px_40px_-10px_var(--color-indigo-500)] hover:bg-[length:100%_150%];
+  }
+  .btn-ghost {
+    @apply border-gradient bg-linear-to-b from-gray-800 to-gray-800/60 text-gray-200 hover:from-gray-700;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-indigo-200/70 before:h-px before:w-8 before:bg-linear-to-r before:from-transparent before:to-indigo-300/60;
+  }
+}
+
+/* Texto legal */
+@layer components {
+  .legal {
+    @apply text-base leading-relaxed text-gray-300 md:text-[17px];
+  }
+  .legal h2 {
+    @apply mt-14 scroll-mt-28 text-2xl font-semibold tracking-tight text-white md:text-3xl;
+  }
+  .legal h3 {
+    @apply mt-8 text-lg font-semibold text-white;
+  }
+  .legal p,
+  .legal ul,
+  .legal ol,
+  .legal table {
+    @apply mt-4;
+  }
+  .legal ul {
+    @apply list-disc space-y-2 pl-5 marker:text-indigo-400;
+  }
+  .legal ol {
+    @apply list-decimal space-y-2 pl-5 marker:text-indigo-400;
+  }
+  .legal a {
+    @apply text-indigo-300 underline decoration-indigo-400/40 underline-offset-4 hover:decoration-indigo-300;
+  }
+  .legal strong {
+    @apply font-semibold text-white;
+  }
+  .legal table {
+    @apply w-full border-collapse text-sm;
+  }
+  .legal th,
+  .legal td {
+    @apply border border-white/10 px-3 py-2 text-left align-top;
+  }
+  .legal th {
+    @apply bg-white/[0.04] font-semibold text-white;
+  }
+}
+
+/* Al imprimir la hoja de reclamación solo sale la constancia */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+    color: #000 !important;
+    background: #fff !important;
+    border-color: #999 !important;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
