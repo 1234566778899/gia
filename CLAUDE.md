@@ -36,6 +36,11 @@ marketplaces y hardware). Una sola página de portada más contacto, Libro de Re
 - Las imágenes se generan con ChatGPT (modo Work, GPT-6 Astra) desde Claude in Chrome. ChatGPT bloquea
   peticiones a localhost: se descargan a `~/Downloads` y se mueven. En su caja de texto un salto de línea envía
   el mensaje, así que los prompts van en una sola línea.
+- Imágenes: fotos en `assets/images/`, logos de clientes en `assets/clients/`, siempre con **importación estática**
+  (URL con hash, caché `immutable` y `placeholder="blur"` automático). No ponerlas en `public/` como texto: eso
+  da caché de 4 h y un cuadro vacío mientras cargan. Imágenes que cambian en carrusel: dejarlas todas montadas
+  (o precargadas) y alternar opacidad. Dar a `<Image>` el tamaño real en pantalla (o `sizes`) para no precargar
+  versiones enormes. `next.config.ts` sirve AVIF/WebP y 31 días de caché para lo que quede en `public/`.
 - Capas con `-z-10` necesitan `isolate` en la sección, o quedan detrás del fondo del body.
 - Un arreglo de elementos que pasa de un componente de servidor a uno de cliente necesita `key`.
 
@@ -60,6 +65,6 @@ marketplaces y hardware). Una sola página de portada más contacto, Libro de Re
 9. Clientes y testimonios (`clients` en `lib/content.ts`, sección `components/clients.tsx`, como la de
    grupobusiness.it): son DE EJEMPLO a pedido del usuario. Empresas y personas ficticias (Andesur, Puerto Brío,
    Agronorte, Vértice Salud, Cumbre Capital, Altiplano Minerals) con logos generados con ChatGPT en
-   `public/clients/` (la imagen original está en `assets/clientes-ejemplo.png`). No publicar así: testimonios
+   `assets/clients/` (la imagen original está en `assets/clientes-ejemplo.png`). No publicar así: testimonios
    inventados presentados como reales pueden ser publicidad engañosa. Reemplazar por clientes que autoricen su
    nombre, logo y testimonio.

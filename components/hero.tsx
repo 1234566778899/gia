@@ -31,26 +31,39 @@ export function Hero() {
       onMouseLeave={() => setPaused(false)}
       className="relative isolate flex h-[100svh] min-h-[560px] items-center justify-center overflow-hidden bg-black pt-[70px]"
     >
-      <AnimatePresence initial={false}>
-        <motion.div
-          key={s.image}
-          className="absolute inset-0 -z-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: 'easeInOut' }}
-        >
+      {/* Las tres imágenes quedan montadas desde el inicio (la primera con prioridad, las demás en segundo
+          plano) y solo cambia su opacidad: cuando le toca a cada una ya está descargada y no hay parpadeo. */}
+      <div className="absolute inset-0 -z-10">
+        {slides.map((sl, k) => (
           <motion.div
+            key={sl.image.src}
             className="absolute inset-0"
-            initial={{ scale: 1.06 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: INTERVAL / 1000 + 1.2, ease: 'linear' }}
+            initial={false}
+            animate={{ opacity: k === i ? 1 : 0 }}
+            transition={{ duration: 1.2, ease: 'easeInOut' }}
+            aria-hidden={k !== i}
           >
-            <Image src={s.image} alt="" fill priority={i === 0} sizes="100vw" className="object-cover" />
+            <motion.div
+              className="absolute inset-0"
+              animate={{ scale: k === i ? 1 : 1.06 }}
+              transition={{ duration: k === i ? INTERVAL / 1000 + 1.2 : 0, ease: 'linear' }}
+            >
+              <Image
+                src={sl.image}
+                alt=""
+                fill
+                sizes="100vw"
+                placeholder="blur"
+                preload={k === 0}
+                loading={k === 0 ? undefined : 'eager'}
+                fetchPriority={k === 0 ? 'high' : 'low'}
+                className="object-cover"
+              />
+            </motion.div>
           </motion.div>
-          <div className="absolute inset-0 bg-black/45" />
-        </motion.div>
-      </AnimatePresence>
+        ))}
+        <div className="absolute inset-0 bg-black/45" />
+      </div>
 
       <div className="mx-auto max-w-4xl px-6 text-center text-white">
         <AnimatePresence mode="wait">
@@ -81,7 +94,7 @@ export function Hero() {
         <div className="flex gap-2">
           {slides.map((sl, k) => (
             <button
-              key={sl.image}
+              key={sl.image.src}
               type="button"
               onClick={() => setI(k)}
               aria-label={`Ir a la diapositiva ${k + 1}`}

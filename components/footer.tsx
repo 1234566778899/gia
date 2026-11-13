@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import imgBook from '@/public/libro-reclamaciones.png'
 import { nav, offices, services, site } from '@/lib/content'
 import { legalNav } from '@/lib/legal'
 import { CookieSettingsLink } from './cookie-consent'
@@ -23,7 +24,7 @@ export function Footer() {
             href="/libro-de-reclamaciones"
             className="mt-6 flex max-w-xs items-center gap-3 rounded-md border border-line bg-white p-3 transition-shadow hover:shadow-md"
           >
-            <Image src="/libro-reclamaciones.png" alt="" width={40} height={40} className="size-10 shrink-0" />
+            <Image src={imgBook} alt="" width={40} height={40} className="size-10 shrink-0" />
             <span>
               <span className="block text-sm font-semibold text-ink">Libro de Reclamaciones</span>
               <span className="block text-xs text-muted">Registra aquí tu queja o reclamo</span>

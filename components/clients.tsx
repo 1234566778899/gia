@@ -52,7 +52,7 @@ export function Clients() {
             <p className="mt-1 font-display text-lg font-semibold uppercase md:text-2xl">{t.title}</p>
             <blockquote className="mt-4 text-[15px] italic leading-relaxed text-white/90 md:text-base">“{t.quote}”</blockquote>
             <div className="relative mt-7 h-[86px] w-[150px] rounded-md bg-white">
-              <Image src={t.logo} alt={t.company} fill sizes="150px" className="object-contain p-2.5" />
+              <Image src={t.logo} alt={t.company} fill sizes="150px" loading="eager" className="object-contain p-2.5" />
             </div>
             <figcaption className="mt-4">
               <span className="block text-sm font-semibold">{t.name}</span>
@@ -62,6 +62,16 @@ export function Clients() {
             </figcaption>
           </motion.figure>
         </AnimatePresence>
+
+        {/* Precarga de todos los logos (misma URL optimizada que la visible), para que el recuadro blanco
+            nunca aparezca vacío al cambiar de testimonio. */}
+        <div aria-hidden="true" className="pointer-events-none absolute left-0 top-0 size-px overflow-hidden opacity-0">
+          {list.map((x) => (
+            <div key={x.company} className="relative h-[86px] w-[150px]">
+              <Image src={x.logo} alt="" fill sizes="150px" loading="eager" fetchPriority="low" />
+            </div>
+          ))}
+        </div>
 
         <button type="button" onClick={() => go(-1)} aria-label="Testimonio anterior" className="absolute left-2 top-1/2 -translate-y-1/2 p-3 text-white/80 hover:text-white sm:left-4">
           <Chevron dir="left" />

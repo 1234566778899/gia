@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import imgCta from '@/assets/images/cta.jpg'
 import { about, capabilities, method, services } from '@/lib/content'
 import { FadeIn } from './motion-kit'
 import { SectionTitle } from './section-title'
@@ -23,7 +24,7 @@ export function About() {
       </div>
       <FadeIn className="mt-10 grid md:mt-14 md:grid-cols-2">
         <div className="relative aspect-[16/10] md:aspect-auto md:min-h-[360px]">
-          <Image src={about.image} alt="Escalones de metal unidos por una ruta de luz hacia un prisma" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+          <Image src={about.image} alt="Escalones de metal unidos por una ruta de luz hacia un prisma" fill placeholder="blur" sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
         </div>
         <div className="flex items-center bg-panel px-6 py-10 sm:px-10 lg:px-16">
           <div className="max-w-xl space-y-5 text-[15px] leading-relaxed text-muted md:text-base">
@@ -55,6 +56,7 @@ export function Solutions() {
                   src={s.image}
                   alt={s.alt}
                   fill
+                  placeholder="blur"
                   sizes="(min-width: 1024px) 25vw, 50vw"
                   className="object-cover opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-60"
                 />
@@ -125,7 +127,7 @@ export function Capabilities() {
 export function ContactBand() {
   return (
     <section id="contacto" className="relative isolate overflow-hidden bg-black py-16 text-center text-white md:py-20">
-      <Image src="/images/cta.jpg" alt="" fill sizes="100vw" className="-z-10 object-cover opacity-35" />
+      <Image src={imgCta} alt="" fill placeholder="blur" sizes="100vw" className="-z-10 object-cover opacity-35" />
       <FadeIn className="mx-auto max-w-3xl px-6">
         <p className="font-display text-sm italic text-white/70">Hablemos</p>
         <h2 className="mt-2 font-display text-2xl font-semibold uppercase md:text-3xl">¿Construimos lo que sigue?</h2>

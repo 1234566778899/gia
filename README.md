@@ -5,7 +5,7 @@ Sitio de la empresa de tecnología de Grupo HEN (subdominio previsto: `gia.grupo
 - Next.js 16 (App Router) + Tailwind CSS v4
 - Animaciones: `motion` (apariciones suaves y carrusel del inicio)
 - Estilo claro y sobrio guiado por https://grupobusiness.it, sin degradados.
-- Imágenes generadas con ChatGPT (`public/images/*.jpg`).
+- Imágenes generadas con ChatGPT (`assets/images/*.jpg`), importadas de forma estática: caché permanente, AVIF/WebP y vista borrosa mientras cargan.
 
 ## Desarrollo
 
