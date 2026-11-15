@@ -10,15 +10,20 @@ marketplaces y hardware). Una sola página de portada más contacto, Libro de Re
 - Stack: Next.js 16 (App Router, Cache Components), Tailwind v4 y `motion`.
 - Estilo (desde 2026-11-12): claro y sobrio, guiado por https://grupobusiness.it. Fondo blanco, paneles `bg-panel`
   (#f3f3f3), títulos `.section-title` (Exo, mayúsculas) con `.accent-bar`, texto en Montserrat, hero en carrusel
-  a pantalla completa y pie gris con barra negra. Acento: índigo→cian del logo. Animación solo con `FadeIn`;
+  a pantalla completa y pie gris con barra negra. Animación solo con `FadeIn`;
   el usuario pidió quitar lo recargado (texto gigante, cintas, tarjetas apiladas, scroll horizontal).
-- **Nada de degradados** (el usuario los rechazó): colores planos, acento azul marino `#1e3a8a` (`--color-brand`).
-- Marca (desde 2026-11-12, tercera versión): cubo isométrico + «GIA» en azul marino + eslogan «BUSINESS & IT
-  CONSULTING» en gris `#4b5563`, generado con ChatGPT (el usuario eligió entre 4; están en
-  `assets/logo-propuestas.png`). Rechazó antes la G con nodo en degradado y el «GIA» grueso sin símbolo.
-  Archivos: `public/logo.png` (completo), `public/logo-cube.png`, `public/logo-gia.png`; favicon = cubo blanco
-  sobre azul marino. `<Logo />` (header) arma el diseño por partes con el eslogan como texto, porque en imagen
-  medía ~5 px; `<Logo variant="full" />` va en el pie.
+- **Nada de degradados** (el usuario los rechazó): colores planos. Paleta (desde 2026-11-13, dada por el usuario):
+  principal `#023e51` (`--color-brand`: textos, botones, enlaces; `brand-dark` #022c3a para hover) y secundario
+  `#0a8a9c` (`--color-accent`: barra de acento, íconos de normas y sedes, cifras, numeración del reclamo).
+- Marca (desde 2026-11-13, cuarta versión, entregada por el usuario como JPEG de WhatsApp): «GIA» en letras
+  cuadradas (G en #023e51, I y A en #0a8a9c) y debajo «BUSINESS & IA CONSULTING» en dos líneas, sin símbolo.
+  Ojo: el logo dice «IA», pero `site.name` y los textos legales siguen diciendo «Business & IT Consulting»;
+  falta que el usuario confirme cuál es el nombre correcto. Versiones anteriores rechazadas: G con nodo en
+  degradado, «GIA» grueso sin símbolo y cubo isométrico (propuestas en `assets/logo-propuestas.png`).
+  Archivos (PNG con fondo transparente y colores exactos, recortados del JPEG con PIL): `public/logo.png`
+  (completo, pie y json-ld), `public/logo-gia.png` (solo letras, header), `assets/og-logo.png` (imagen de redes);
+  favicon e íconos = «G» blanca sobre #023e51. `<Logo />` (header) usa la imagen del «GIA» y el eslogan como
+  texto en Exo justificado a lo ancho, porque en imagen a ese tamaño no se lee; `<Logo variant="full" />` va en el pie.
 - El «GIA» gigante en contorno del pie se quitó a pedido del usuario (2026-11-12). RUC y razón social no van en el pie;
   solo en la hoja del Libro de Reclamaciones y en las páginas legales, donde la ley los exige.
 

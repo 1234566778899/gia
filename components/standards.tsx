@@ -12,7 +12,7 @@ export function Standards() {
           {standards.map((s, k) => (
             <FadeIn key={s.code} delay={(k % 3) * 0.06}>
               <div className="flex h-full gap-4 rounded-md bg-panel p-6">
-                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-brand text-white">
+                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-accent text-white">
                   <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                     <path d="M12 3 5 6v5c0 4.4 3 8.4 7 10 4-1.6 7-5.6 7-10V6l-7-3Z" strokeLinejoin="round" />
                     <path d="m9 12 2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />

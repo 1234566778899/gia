@@ -1,28 +1,37 @@
 import Image from 'next/image'
-import logoCube from '@/public/logo-cube.png'
 import logoFull from '@/public/logo.png'
 import logoGia from '@/public/logo-gia.png'
 
 /**
- * Logotipo GIA: cubo isométrico + «GIA» + eslogan, azul marino plano (generado con ChatGPT).
- * - `short` (header): mismo diseño armado por partes, con el eslogan como texto para que se lea a ese tamaño.
+ * Logotipo GIA (2026-11-13): «GIA» en letras cuadradas (G en #023e51, I y A en #0a8a9c) y debajo el eslogan
+ * «BUSINESS & IA CONSULTING» en dos líneas, sin símbolo.
+ * - `short` (header): la imagen del «GIA» y el eslogan como texto en Exo, porque en imagen a ese tamaño no se lee.
  * - `full` (pie): la imagen completa.
  */
 export function Logo({ variant = 'short', className = '' }: { variant?: 'short' | 'full'; className?: string }) {
   if (variant === 'full') {
     return (
-      <Image src={logoFull} alt="GIA Business & IT Consulting" width={211} height={80} className={`w-auto ${className || 'h-20'}`} />
+      <Image src={logoFull} alt="GIA Business & IA Consulting" width={172} height={96} className={`w-auto ${className || 'h-24'}`} />
     )
   }
   return (
-    <span className={`flex items-center gap-2 ${className}`} aria-label="GIA Business & IT Consulting" role="img">
-      <Image src={logoCube} alt="" width={35} height={42} preload className="h-[42px] w-auto" />
-      <span className="flex flex-col">
-        <Image src={logoGia} alt="" width={62} height={26} preload className="h-[26px] w-auto self-start" />
-        <span className="mt-0.5 whitespace-nowrap text-[9.5px] font-semibold uppercase leading-none tracking-[0.04em] text-[#4b5563]">
-          Business &amp; IT Consulting
+    <span className={`flex w-fit flex-col ${className}`} aria-label="GIA Business & IA Consulting" role="img">
+      <Image src={logoGia} alt="" width={101} height={32} preload className="h-8 w-auto" />
+      <span className="mt-[5px] flex flex-col gap-[3px] font-display text-[9px] font-bold uppercase leading-none text-brand">
+        <span className="flex justify-between" aria-hidden="true">
+          {spread('Business &')}
+        </span>
+        <span className="flex justify-between" aria-hidden="true">
+          {spread('IA Consulting')}
         </span>
       </span>
     </span>
   )
+}
+
+/** Reparte las letras a lo ancho del «GIA», como en el logo original (texto justificado). */
+function spread(text: string) {
+  return text.split('').map((ch, i) => (
+    <span key={i}>{ch === ' ' ? ' ' : ch}</span>
+  ))
 }

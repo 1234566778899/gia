@@ -158,7 +158,7 @@ function Section({ n, title, children }: { n: string; title: string; children: R
   return (
     <fieldset className="space-y-5">
       <legend className="mb-5 flex items-center gap-3 font-display text-lg font-semibold uppercase text-ink">
-        <span className="grid size-7 place-items-center rounded-full bg-brand text-xs font-semibold text-white">{n}</span>
+        <span className="grid size-7 place-items-center rounded-full bg-accent text-xs font-semibold text-white">{n}</span>
         {title}
       </legend>
       {children}

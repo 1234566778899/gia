@@ -85,7 +85,7 @@ export function Method() {
           {method.map((m, k) => (
             <FadeIn key={m.n} delay={k * 0.06}>
               <div className="h-full rounded-md bg-white p-7 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
-                <span className="font-display text-3xl font-semibold text-brand/90">{m.n}</span>
+                <span className="font-display text-3xl font-semibold text-accent">{m.n}</span>
                 <h3 className="mt-4 text-lg font-semibold text-ink">{m.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{m.text}</p>
               </div>

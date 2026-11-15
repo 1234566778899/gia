@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 /* Estilo claro y sobrio, guiado por grupobusiness.it: fondo blanco, paneles grises, títulos en
-   mayúsculas (Exo) con una barra de acento y texto en Montserrat. El acento es el azul marino plano del logo GIA (#1e3a8a), sin degradados. */
+   mayúsculas (Exo) con una barra de acento y texto en Montserrat. Colores planos del logo GIA, sin degradados: principal #023e51 (`brand`, textos, botones) y secundario
+   #0a8a9c (`accent`, barras de acento, íconos y detalles). */
 
 @theme inline {
   --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
@@ -13,7 +14,9 @@
   --color-muted: #5f6368;
   --color-panel: #f3f3f3;
   --color-line: #e7e7e7;
-  --color-brand: #1e3a8a;
+  --color-brand: #023e51;
+  --color-brand-dark: #022c3a;
+  --color-accent: #0a8a9c;
 }
 
 @layer base {
@@ -32,13 +35,13 @@
   }
 }
 
-/* Barra de acento bajo los títulos (color plano: el usuario no quiere degradados) */
+/* Barra de acento bajo los títulos, en el color secundario (plano: el usuario no quiere degradados) */
 @utility accent-bar {
   display: block;
   width: 88px;
   height: 4px;
   border-radius: 2px;
-  background: var(--color-brand);
+  background: var(--color-accent);
 }
 
 @layer components {
@@ -49,7 +52,7 @@
     @apply bg-white text-ink shadow-sm hover:bg-gray-100;
   }
   .btn-primary {
-    @apply bg-brand text-white hover:bg-blue-950;
+    @apply bg-brand text-white hover:bg-brand-dark;
   }
   .btn-outline {
     @apply border border-ink/20 text-ink hover:border-ink/40 hover:bg-black/[0.03];
